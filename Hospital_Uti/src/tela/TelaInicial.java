@@ -6,31 +6,22 @@
 package tela;
 
 import cadastro.UtilitarioLogin;
+import controle.ControladorTelaInicial;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author 88178
  */
-public class TelaInicial extends javax.swing.JFrame {
+public class TelaInicial extends javax.swing.JFrame implements ControladorTelaInicial.Display{
 
+    private ControladorTelaInicial controle;
     /**
      * Creates new form TelaInicial
      */
     public TelaInicial() {
         initComponents();
-        switch (UtilitarioLogin.usuarioLogado.getTipo()) {
-            case ATENDENTE:
-                btnUsuario.setEnabled(false);
-                btnPaciente.setEnabled(false);
-                break;
-            case GERENTE:
-                break;
-            case MÉDICO:
-                btnUsuario.setEnabled(false);
-                break;
-            default:
-                throw new AssertionError();
-        }
+        controle = new ControladorTelaInicial(this);
     }
 
     /**
@@ -51,33 +42,18 @@ public class TelaInicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         btnPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tela/hospital32.png"))); // NOI18N
         btnPaciente.setText("Lista de pacientes");
-        btnPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPacienteActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnPaciente);
 
         btnVisitante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tela/stethoscope.png"))); // NOI18N
         btnVisitante.setText("Visitantes");
-        btnVisitante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVisitanteActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnVisitante);
 
         btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tela/heart8.png"))); // NOI18N
         btnUsuario.setText("Cadastro");
-        btnUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuarioActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnUsuario);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -89,21 +65,6 @@ public class TelaInicial extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
-        new AdmUsuario().setVisible(true);  
-            
-
-    }//GEN-LAST:event_btnUsuarioActionPerformed
-
-    private void btnVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitanteActionPerformed
-        new ListaVisitante().setVisible(true);  
-            
-    }//GEN-LAST:event_btnVisitanteActionPerformed
-
-    private void btnPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteActionPerformed
-        new ListaPacienteUti().setVisible(true);
-    }//GEN-LAST:event_btnPacienteActionPerformed
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -113,4 +74,39 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void addAcaoCadastro(ActionListener listener) {
+        btnUsuario.addActionListener(listener);
+    }
+
+    @Override
+    public void addAcaoListarPacientes(ActionListener listener) {
+        btnPaciente.addActionListener(listener);
+    }
+
+    @Override
+    public void addAcaoVisitante(ActionListener listener) {
+        btnVisitante.addActionListener(listener);
+    }
+
+    @Override
+    public void setVisibilidadeCadastro(boolean visibilidade) {
+        btnUsuario.setEnabled(visibilidade);
+    }
+
+    @Override
+    public void setVisibilidadeListarPacientes(boolean visibilidade) {
+        btnPaciente.setEnabled(visibilidade);
+    }
+
+    @Override
+    public void setVisibilidadeVisitantes(boolean visibilidade) {
+        btnVisitante.setEnabled(visibilidade);
+    }
+
+    @Override
+    public void fecharTela() {
+        dispose();
+    }
 }

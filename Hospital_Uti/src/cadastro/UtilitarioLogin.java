@@ -5,6 +5,7 @@
  */
 package cadastro;
 
+import dao.UsuarioDAO;
 import dados.Usuario;
 
 /**

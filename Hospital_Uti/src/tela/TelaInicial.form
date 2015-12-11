@@ -43,9 +43,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Lista de pacientes"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPacienteActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVisitante">
           <Properties>
@@ -54,9 +51,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Visitantes"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisitanteActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnUsuario">
           <Properties>
@@ -65,9 +59,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastro"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuarioActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cadastro;
+package dao;
 
+import cadastro.Conexao;
 import dados.Usuario;
 import estado.Tipo;
 import java.sql.Connection;

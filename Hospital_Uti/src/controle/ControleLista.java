@@ -1,6 +1,6 @@
 package controle;
 
-import cadastro.UsuarioDAO;
+import dao.UsuarioDAO;
 import dados.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -5,7 +5,7 @@
  */
 package controle;
 
-import cadastro.UsuarioDAO;
+import dao.UsuarioDAO;
 import cadastro.UtilitarioLogin;
 import dados.Usuario;
 import java.awt.event.ActionEvent;
